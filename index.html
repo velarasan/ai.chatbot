@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Think AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#10111b;color:white}
+header{padding:18px;background:#191b2b;border-bottom:1px solid #303248}
+h1{margin:0;color:#a797ff}
+header p{color:#b9bad0;margin-bottom:0}
+#chat{height:calc(100dvh - 155px);overflow-y:auto;padding:16px}
+.message{padding:13px;margin:12px 0;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}
+.user{background:#37345e;margin-left:25px}
+.ai{background:#222436;margin-right:25px}
+form{position:fixed;bottom:0;left:0;right:0;display:flex;gap:8px;padding:12px;background:#191b2b}
+input{flex:1;min-width:0;padding:14px;border-radius:10px;border:1px solid #44465e;background:#10111b;color:white;font-size:16px}
+button{padding:12px 16px;border:0;border-radius:10px;background:#8270ff;color:white;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<h1>✦ Think AI</h1>
+<p>Your personal AI assistant</p>
+</header>
+<main id="chat">
+<div class="message ai">Hello! 👋 Welcome to Think AI.I'm your personal AI assistant.
+I am ready to grow with you! 🚀
+
+Note: My AI brain will be connected in the next development stage.</div>
+
+</main>
+<form id="form">
+<input id="prompt" placeholder="Ask Think AI anything..." autocomplete="off" required>
+<button type="submit">Send</button>
+</form>
+<script>
+const form=document.getElementById('form');
+const input=document.getElementById('prompt');
+const chat=document.getElementById('chat');function addMessage(text,type){
+const div=document.createElement('div');
+div.className='message '+type;
+div.textContent=text;
+chat.appendChild(div);
+chat.scrollTop=chat.scrollHeight;
+}
+
+form.addEventListener('submit',function(e){
+e.preventDefault();
+const question=input.value.trim();
+if(!question)return;
+addMessage(question,'user');
+input.value='';
+addMessage("I'm not connected to an AI model yet. We'll add my AI brain in the next step!",'ai');
+});
+</script>
+
+</body>
+</html>
